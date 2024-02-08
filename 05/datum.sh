@@ -45,8 +45,8 @@ fi
 validate_date $1
 validate_date $2
 
-DATUM1=$(date -j -f "%Y.%m.%d" "$1" +%s)
-DATUM2=$(date -j -f "%Y.%m.%d" "$2" +%s)
+DATUM1=$(date -j -f "$format" "$1" +%s)
+DATUM2=$(date -j -f "$format" "$2" +%s)
 
 if [[ $DATUM1 > $DATUM2 ]]; then
   echo 0
