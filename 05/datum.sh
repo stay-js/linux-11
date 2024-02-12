@@ -22,7 +22,7 @@ function validate_date {
 function calculate_working_days {
   local working_days=0
 
-  for (( current_date=$1; current_date <= $2; current_date += 86400 )); do
+  for (( current_date=$1; current_date <= $2; current_date+=86400 )); do
     local day_of_week=$(date -r "$current_date" +%w)
 
     if (( $day_of_week >= 1 && $day_of_week <= 5 )); then

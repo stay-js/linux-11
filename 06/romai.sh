@@ -13,7 +13,7 @@ numerals=("M" "CM" "D" "CD" "C" "XC" "L" "XL" "X" "IX" "V" "IV" "I")
 for (( i=0; i < ${#values[@]}; i++ )); do
   while (( $current >= ${values[i]} )); do
     result+=${numerals[i]}
-    current=$(($current - ${values[i]}))
+    ((current-=${values[i]}))
   done
 done
 
