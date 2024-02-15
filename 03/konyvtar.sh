@@ -1,21 +1,31 @@
 #!/bin/bash
 
-for i in $@; do
-  case $i in
-  "-h" | "--help")
-    echo "HASZNALAT: $0 [-p | --pwd] | <konyvtar1> <konyvtar2> ..."
-    exit 0
-    ;;
+exit_code=0
 
-  "-p" | "--pwd")
-    echo "$PWD"
-    ;;
+create_directory() {
+  if [ -d $1 ]; then
+    echo "$1: már létezik" >&2
+    exit_code=1
+  else
+    mkdir $1
+  fi
+}
 
-  *)
-    mkdir "$i" || {
-      echo "$i már létezik" >&2
-      exit 1
-    }
-    ;;
-  esac
+for arg in $@; do
+  case $arg in
+    "-h" | "--help")
+      echo "HASZNALAT: $0 [-p | --pwd] | <konyvtar1> <konyvtar2> ..."
+      exit 0
+      ;;
+
+      "-p" | "--pwd")
+        pwd
+        ;;
+        
+      *)
+        create_directory "$arg"
+        ;;
+    esac
 done
+
+exit $exit_code
