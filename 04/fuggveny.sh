@@ -12,9 +12,3 @@ function masodfoku {
 
   echo "x1=$x1, x2=$x2"
 }
-
-if [ $# == 1 ]; then
-  gyok $1
-elif [ $# == 3 ]; then
-  masodfoku $1 $2 $3
-fi
