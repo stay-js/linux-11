@@ -13,7 +13,7 @@ function create_directory {
 
 for i in $@; do
   case $i in
-   "-h" | "--help")
+    "-h" | "--help")
       echo "HASZNALAT: $0 [-p | --pwd] | <konyvtar1> <konyvtar2> ..."
       exit 0
       ;;
