@@ -2,7 +2,7 @@
 
 exit_code=0
 
-create_directory() {
+function create_directory {
   if [ -d $1 ]; then
     echo "$1: már létezik" >&2
     exit_code=1
@@ -11,20 +11,20 @@ create_directory() {
   fi
 }
 
-for arg in $@; do
-  case $arg in
-    "-h" | "--help")
+for i in $@; do
+  case $i in
+   "-h" | "--help")
       echo "HASZNALAT: $0 [-p | --pwd] | <konyvtar1> <konyvtar2> ..."
       exit 0
       ;;
 
-      "-p" | "--pwd")
-        pwd
-        ;;
+    "-p" | "--pwd")
+      pwd
+      ;;
         
-      *)
-        create_directory "$arg"
-        ;;
+    *)
+      create_directory "$i"
+      ;;
     esac
 done
 
