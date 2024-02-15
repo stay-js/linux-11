@@ -2,17 +2,8 @@
 
 exit_code=0
 
-function create_directory {
-  if [ -d $1 ]; then
-    echo "$1: már létezik" >&2
-    exit_code=1
-  else
-    mkdir $1
-  fi
-}
-
-for i in $@; do
-  case $i in
+for arg in $@; do
+  case $arg in
     "-h" | "--help")
       echo "HASZNALAT: $0 [-p | --pwd] | <konyvtar1> <konyvtar2> ..."
       exit 0
@@ -21,9 +12,14 @@ for i in $@; do
     "-p" | "--pwd")
       pwd
       ;;
-        
+
     *)
-      create_directory "$i"
+      if [ -d "$arg" ]; then
+        echo "$arg: már létezik" >&2
+        exit_code=1
+      else
+        mkdir "$arg"
+      fi
       ;;
     esac
 done
