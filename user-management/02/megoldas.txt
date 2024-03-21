@@ -1,0 +1,14 @@
+0.
+  a: touch adat.txt
+  b: mkdir adatok
+  c: touch adatok/a.txt adatok/b.txt
+1. chmod u=rw,g=r,o= adat.txt
+2. chmod 640 adat.txt
+3. chmod 440 adat.txt
+4. chmod g+w adat.txt
+5. chmod -R 640 adatok
+6. ls -l adatok
+7. chmod a+w adat.txt
+8. chmod a+w adatok
+9. chmod -w adatok/b.txt
+10. chmod --reference=adatok/a.txt adatok/b.txt
