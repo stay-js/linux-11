@@ -1,0 +1,26 @@
+1.
+  a: adduser user
+  b: groupadd admin
+  c: usermod -a -G admin user
+  d: mkdir /home/user/nevkonyvtar
+  e: chown user:admin /home/user/nevkonyvtar
+  f: chmod 660 /home/user/nevkonyvtar
+
+2.
+  a:
+    i: touch /home/user/nevkonyvtar/test.sh
+    ii: chown root:admin /home/user/nevkonyvtar/test.sh
+    iii: chmod 070 /home/user/nevkonyvtar/test.sh
+  b:
+    #!/bin/bash
+    full_name=$(getent passwd $USER | cut -d ':' -f 5 | cut -d ',' -f1)
+    last_name=$(echo $full_name | cut -d ' ' -f2)
+
+    if [ $last_name = "" ]; then
+      echo "Hello Garfield."
+    else
+      echo "Hello $full_name."
+    fi
+    
+3. chmod g+s /home/user/nevkonyvtar/test.sh
+4. chmod +t /home/user/nevkonyvtar
